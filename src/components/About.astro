@@ -1,34 +1,19 @@
 ---
 import { site } from '../data/site';
-import { skillGroups } from '../data/skills';
+import Skills from './Skills.astro';
 import SectionHeading from './SectionHeading.astro';
 ---
 
 <section id="about" class="mx-auto max-w-6xl scroll-mt-20 px-6 py-24">
   <SectionHeading eyebrow="The Wizard" title="About me" />
 
-  <div class="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
-    <div class="reveal space-y-5 text-lg text-muted">
-      <p>{site.intro}</p>
-      <p>{site.bio}</p>
-    </div>
+  <div class="reveal max-w-3xl space-y-5 text-lg text-muted">
+    <p>{site.intro}</p>
+    <p>{site.bio}</p>
+  </div>
 
-    <div class="reveal">
-      <p class="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-arcane">Tools I wield</p>
-      <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {
-          skillGroups.map((group) => (
-            <div class="rounded-2xl border border-edge bg-card/40 p-5">
-              <h3 class="text-sm font-semibold text-ink">{group.label}</h3>
-              <ul class="mt-3 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <li class="rounded-full bg-abyss px-3 py-1 font-mono text-xs text-muted">{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+  <div class="mt-16">
+    <p class="reveal mb-6 font-mono text-xs uppercase tracking-[0.3em] text-arcane">Tools I wield</p>
+    <Skills />
   </div>
 </section>

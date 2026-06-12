@@ -24,9 +24,6 @@ jobs:
         uses: actions/checkout@v6
       - name: Build with Astro
         uses: withastro/action@v6
-        with:
-          node-version: 22
-          package-manager: npm
         # withastro/action installs deps, runs `astro build`, uploads the
         # artifact, and adds .nojekyll automatically.
 

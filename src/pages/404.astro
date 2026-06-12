@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import AuroraBackground from '../components/AuroraBackground.astro';
+---
+
+<Base title="404 — Lost in the void">
+  <AuroraBackground />
+  <main id="main" class="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <p class="font-mono text-sm uppercase tracking-[0.3em] text-arcane">Spell misfired</p>
+    <h1 class="mt-4 text-7xl font-extrabold tracking-tight text-arcane-gradient sm:text-8xl">404</h1>
+    <p class="mt-4 max-w-md text-muted">
+      This page vanished into the void — or never existed. Let's get you back.
+    </p>
+    <a
+      href="/"
+      class="glow-ring mt-8 rounded-xl bg-arcane px-6 py-3 font-semibold text-void transition-transform hover:-translate-y-0.5"
+    >
+      Return home
+    </a>
+  </main>
+</Base>

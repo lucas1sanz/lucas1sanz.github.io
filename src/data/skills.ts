@@ -7,23 +7,45 @@ export type SkillGroup = {
 };
 
 // Grouped skills for the About section grid.
-// Reflects Lucas's DevOps background + cloud, alongside AI tooling.
+// Comprehensive across Lucas's DevOps roots + cloud, MLOps, DevSecOps, and the
+// AI stack. TODO: prune anything that isn't actually in your toolkit — better to
+// be honest than exhaustive.
 export const skillGroups: SkillGroup[] = [
   {
-    label: 'AI tooling',
-    items: ['Claude', 'Cursor', 'Claude Code', 'RAG / embeddings', 'Prompt design'],
-  },
-  {
-    label: 'Cloud & infra',
-    items: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Terraform', 'Linux'],
-  },
-  {
     label: 'Languages',
-    items: ['Python', 'TypeScript', 'Go', 'Bash', 'SQL'],
+    items: ['Python', 'TypeScript', 'Go', 'Bash', 'SQL', 'JavaScript', 'YAML'],
   },
   {
-    label: 'DevOps & craft',
-    items: ['CI/CD', 'Observability', 'Automation', 'System design', 'Performance'],
+    label: 'LLMs',
+    items: ['Claude', 'GPT-4o', 'Llama', 'Mistral', 'Groq', 'Ollama', 'Hugging Face'],
+  },
+  {
+    label: 'AI frameworks',
+    items: ['LangChain', 'LangGraph', 'LlamaIndex', 'DSPy', 'RAG', 'Prompt engineering'],
+  },
+  {
+    label: 'Embeddings & Vector DBs',
+    items: ['pgvector', 'Pinecone', 'Qdrant', 'Weaviate', 'Chroma', 'FAISS', 'Sentence-Transformers'],
+  },
+  {
+    label: 'Cloud & containers',
+    items: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Helm', 'Terraform', 'Ansible'],
+  },
+  {
+    label: 'CI/CD & GitOps',
+    items: ['GitHub Actions', 'GitLab CI', 'ArgoCD', 'Flux', 'Jenkins', 'Git'],
+  },
+  {
+    label: 'MLOps',
+    items: ['MLflow', 'Weights & Biases', 'Kubeflow', 'BentoML', 'DVC', 'Ray'],
+  },
+  {
+    label: 'DevSecOps',
+    items: ['Trivy', 'Snyk', 'Vault', 'SOPS', 'OPA', 'Falco'],
+  },
+  {
+    label: 'Observability',
+    items: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Loki', 'Datadog', 'Linux'],
   },
 ];
 

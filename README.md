@@ -28,7 +28,7 @@ All content lives in `src/data/` and a few config spots:
 | Skills + "how the magic works" steps | `src/data/skills.ts` |
 | GitHub username (for `site` URL) | `astro.config.mjs` → `site:` |
 | Favicon | `public/favicon.svg` |
-| Social preview image | `public/og-image.svg` → export a 1200×630 `og-image.png`, then update `src/layouts/Base.astro` |
+| Social preview image | `public/og-image.png` (real 1200×630 card). If you change your name/title, regenerate or replace this PNG. |
 
 Search the repo for `TODO` to find every placeholder.
 

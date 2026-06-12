@@ -1,0 +1,68 @@
+---
+import { skillGroups } from '../data/skills';
+---
+
+<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  {
+    skillGroups.map((group) => (
+      <div class="skill-card reveal rounded-2xl border border-edge bg-card/40 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-arcane/50">
+        <h3 class="flex items-center gap-2 text-sm font-semibold text-ink">
+          <span class="text-arcane/70" aria-hidden="true">✦</span>
+          {group.label}
+        </h3>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {group.items.map((item) => (
+            <li class="skill-chip cursor-default rounded-full border border-edge bg-abyss/70 px-3 py-1 font-mono text-xs text-muted transition-all duration-200 hover:-translate-y-0.5 hover:border-arcane/60 hover:text-ink">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  /* Cursor-following spotlight inside each card (vars set by the script below). */
+  .skill-card {
+    position: relative;
+    isolation: isolate;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(139, 92, 246, 0.16),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .skill-card:hover::before {
+    opacity: 1;
+  }
+  /* Chip lifts get a soft arcane glow on hover */
+  .skill-chip:hover {
+    box-shadow: 0 0 18px -6px var(--color-arcane);
+  }
+</style>
+
+<script>
+  // Track the pointer per-card to position the spotlight gradient.
+  // Skipped entirely for reduced-motion users.
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const cards = document.querySelectorAll<HTMLElement>('.skill-card');
+    cards.forEach((card) => {
+      card.addEventListener('pointermove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      });
+    });
+  }
+</script>
