@@ -1,0 +1,34 @@
+---
+// Pure-CSS aurora: layered blurred gradient blobs that slowly drift.
+// Near-zero runtime cost; decorative only. Sits behind everything.
+---
+
+<div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+  <!-- base vignette so content stays readable over the glow -->
+  <div
+    class="absolute inset-0"
+    style="background: radial-gradient(120% 90% at 50% -10%, rgba(139,92,246,0.10), transparent 55%), var(--color-void);"
+  >
+  </div>
+
+  <!-- arcane (violet) blob -->
+  <div
+    class="animate-drift absolute -left-[10%] top-[-15%] h-[55vmax] w-[55vmax] rounded-full opacity-40 blur-[90px]"
+    style="background: radial-gradient(circle at 30% 30%, var(--color-arcane), transparent 60%);"
+  >
+  </div>
+
+  <!-- aether (cyan) blob -->
+  <div
+    class="animate-drift-slow absolute right-[-15%] top-[25%] h-[45vmax] w-[45vmax] rounded-full opacity-25 blur-[90px]"
+    style="background: radial-gradient(circle at 60% 40%, var(--color-aether), transparent 60%);"
+  >
+  </div>
+
+  <!-- faint gold rune glow near the bottom -->
+  <div
+    class="animate-drift absolute bottom-[-20%] left-[35%] h-[40vmax] w-[40vmax] rounded-full opacity-15 blur-[100px]"
+    style="background: radial-gradient(circle at 50% 50%, var(--color-rune), transparent 65%);"
+  >
+  </div>
+</div>

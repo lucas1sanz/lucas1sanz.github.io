@@ -1,0 +1,49 @@
+---
+import { site } from '../data/site';
+import Particles from './Particles.astro';
+---
+
+<section id="top" class="relative flex min-h-screen items-center overflow-hidden">
+  <!-- Canvas particle layer — vanilla, no framework runtime shipped -->
+  <Particles />
+
+  <div class="mx-auto w-full max-w-6xl px-6 py-32">
+    <p class="animate-materialize font-mono text-sm uppercase tracking-[0.3em] text-arcane" style="animation-delay: 0.1s">
+      {site.title}
+    </p>
+
+    <h1
+      class="animate-materialize mt-5 max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-7xl"
+      style="animation-delay: 0.2s"
+    >
+      <span class="text-arcane-gradient">{site.name}</span>
+    </h1>
+
+    <p
+      class="animate-materialize mt-6 max-w-2xl text-lg text-muted sm:text-xl"
+      style="animation-delay: 0.35s"
+    >
+      {site.tagline}
+    </p>
+
+    <div class="animate-materialize mt-10 flex flex-wrap items-center gap-4" style="animation-delay: 0.5s">
+      <a
+        href="#projects"
+        class="glow-ring rounded-xl bg-arcane px-6 py-3 font-semibold text-void transition-transform hover:-translate-y-0.5"
+      >
+        View work
+      </a>
+      <a
+        href="#contact"
+        class="rounded-xl border border-edge px-6 py-3 font-semibold text-ink transition-colors hover:border-arcane hover:text-arcane"
+      >
+        Summon me
+      </a>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-8 flex justify-center text-faint" aria-hidden="true">
+    <span class="animate-bounce text-2xl">↓</span>
+  </div>
+</section>

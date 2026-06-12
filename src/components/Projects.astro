@@ -1,0 +1,13 @@
+---
+import { projects } from '../data/projects';
+import ProjectCard from './ProjectCard.astro';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="projects" class="mx-auto max-w-6xl scroll-mt-20 px-6 py-24">
+  <SectionHeading eyebrow="Artifacts" title="Spells I've forged" />
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>

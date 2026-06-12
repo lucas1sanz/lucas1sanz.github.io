@@ -1,0 +1,98 @@
+---
+// Lightweight canvas particle field — drifting "motes/sparks".
+// Zero dependencies, vanilla DOM (no framework runtime shipped).
+// Capped particle count; pauses when off-screen or tab hidden;
+// renders a single static frame when the user prefers reduced motion.
+---
+
+<canvas data-particles aria-hidden="true" class="pointer-events-none absolute inset-0 h-full w-full"></canvas>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>('canvas[data-particles]');
+  const ctx = canvas?.getContext('2d', { alpha: true });
+
+  if (canvas && ctx) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const palette = ['139,92,246', '34,211,238', '251,191,36']; // arcane / aether / rune
+
+    type P = { x: number; y: number; vx: number; vy: number; r: number; a: number };
+    let particles: P[] = [];
+    let width = 0;
+    let height = 0;
+    let raf = 0;
+    let visible = true;
+
+    function seed() {
+      const target = Math.min(70, Math.floor((width * height) / 26000));
+      particles = Array.from({ length: target }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
+        r: Math.random() * 1.6 + 0.4,
+        a: Math.random() * 0.5 + 0.2,
+      }));
+    }
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = canvas!.clientWidth;
+      height = canvas!.clientHeight;
+      canvas!.width = Math.floor(width * dpr);
+      canvas!.height = Math.floor(height * dpr);
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+
+    function draw() {
+      ctx!.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        ctx!.beginPath();
+        ctx!.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx!.fillStyle = `rgba(${palette[i % palette.length]},${p.a})`;
+        ctx!.fill();
+      }
+    }
+
+    function step() {
+      for (const p of particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+      }
+      draw();
+      raf = requestAnimationFrame(step);
+    }
+
+    function start() {
+      if (raf || reduceMotion || !visible) return;
+      raf = requestAnimationFrame(step);
+    }
+    function stop() {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    }
+
+    resize();
+
+    if (reduceMotion) {
+      draw(); // static frame only — respect the preference
+    } else {
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          visible = entry.isIntersecting;
+          visible ? start() : stop();
+        },
+        { threshold: 0 }
+      );
+      io.observe(canvas);
+      document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+      window.addEventListener('resize', resize);
+      start();
+    }
+  }
+</script>

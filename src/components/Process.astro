@@ -1,0 +1,26 @@
+---
+import { processSteps } from '../data/skills';
+import SectionHeading from './SectionHeading.astro';
+---
+
+<section id="process" class="relative scroll-mt-20 border-y border-edge/50 bg-abyss/40 py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <SectionHeading eyebrow="The Incantation" title="How the magic works" />
+    <p class="reveal -mt-6 mb-12 max-w-2xl text-muted">
+      No smoke, no mirrors — just a deliberate way of working with AI. The tools are an
+      accelerant; the engineering judgment is the craft.
+    </p>
+
+    <ol class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {
+        processSteps.map((s) => (
+          <li class="reveal rounded-2xl border border-edge bg-card/50 p-6">
+            <span class="font-mono text-sm text-rune" aria-hidden="true">{s.step}</span>
+            <h3 class="mt-3 text-lg font-semibold tracking-tight">{s.title}</h3>
+            <p class="mt-2 text-sm text-muted">{s.body}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

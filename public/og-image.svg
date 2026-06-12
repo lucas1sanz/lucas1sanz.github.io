@@ -1,0 +1,19 @@
+<!-- PLACEHOLDER social preview. TODO: export a 1200x630 PNG named og-image.png
+     (X/Twitter prefers PNG/JPG over SVG) and update the meta in src/layouts/Base.astro. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <radialGradient id="bg" cx="20%" cy="0%" r="90%">
+      <stop offset="0%" stop-color="#1a1030"/>
+      <stop offset="100%" stop-color="#07070b"/>
+    </radialGradient>
+    <linearGradient id="txt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f4f3fb"/>
+      <stop offset="60%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M120 110 L132 165 L187 177 L132 189 L120 244 L108 189 L53 177 L108 165 Z" fill="#8b5cf6"/>
+  <text x="80" y="360" font-family="Inter, sans-serif" font-size="84" font-weight="800" fill="url(#txt)">Lucas</text>
+  <text x="82" y="430" font-family="monospace" font-size="30" fill="#a6a4c0">AI Engineer</text>
+</svg>
